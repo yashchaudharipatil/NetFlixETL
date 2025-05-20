@@ -1,0 +1,13 @@
+{
+	"name": "gitLS",
+	"properties": {
+		"description": "linkedservice to connect adf with github",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
