@@ -1,0 +1,38 @@
+{
+	"name": "dsSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeGit",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"folder_Bronze": {
+				"type": "string"
+			},
+			"File_Bronze": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().File_Bronze",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folder_Bronze",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
