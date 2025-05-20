@@ -1,0 +1,9 @@
+{
+	"name": "NetflixEtlPipeline",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6dbfcb14-9d51-4fe1-9a5b-3c6fce7f9af6",
+		"tenantId": "cf562a2d-726e-4c53-9c26-3adaf2437c5c"
+	}
+}
