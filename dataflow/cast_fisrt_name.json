@@ -1,15 +1,15 @@
 {
-	"name": "DF_Transform_BronzeToSilver",
+	"name": "cast_fisrt_name",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "dataflowSource",
+						"referenceName": "Cast_first_Name",
 						"type": "DatasetReference"
 					},
-					"name": "source"
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -21,7 +21,11 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          cast as string,",
@@ -29,8 +33,11 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source",
-				"source sink(allowSchemaDrift: true,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(cast_first_name = iif(isNull(cast), toString(null()), split(toString(trim(cast)), ' ')[0])\r",
+				",",
+				"          showIDHalf = ascii(show_id)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
